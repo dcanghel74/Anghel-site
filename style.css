@@ -1,33 +1,40 @@
 :root{
-  --bg:#eef2f6;
+  --bg:#f7f8fa;
   --paper:#ffffff;
-  --paper2:#f9fafb;
-  --line:#d1d5db;
-  --text:#1f2933;
-  --muted:#4b5563;
+  --paper2:#fbfbfc;
+  --line:#e5e7eb;
+  --text:#111827;
+  --muted:#374151;
   --muted2:#6b7280;
-  --accent:#2563eb;
-  --shadow:0 10px 28px rgba(0,0,0,.08);
-  --radius:14px;
-  --max:1120px;
+  --accent:#0f2a5f;      /* bleumarin sobru */
+  --accent2:#1f4aa8;     /* link/hover discret */
+  --shadow:0 6px 18px rgba(17,24,39,.06);
+  --radius:12px;
+  --max:1100px;
 }
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   color:var(--text);
   background:var(--bg);
-  line-height:1.7;
+  line-height:1.75;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
-a{color:var(--accent); text-decoration:none}
-a:hover{text-decoration:underline}
+/* Links: ca într-un articol științific */
+a{
+  color:var(--accent2);
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+a:hover{color:var(--accent)}
 
-.wrap{max-width:var(--max); margin:0 auto; padding:22px}
+/* Layout */
+.wrap{max-width:var(--max); margin:0 auto; padding:24px}
 
-/* Header */
+/* Header: simplu, instituțional */
 header{
   position:sticky;
   top:0;
@@ -38,7 +45,7 @@ header{
 
 .top{
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   justify-content:space-between;
   gap:14px;
   flex-wrap:wrap;
@@ -47,47 +54,59 @@ header{
 .brand{
   display:flex;
   flex-direction:column;
-  gap:2px;
-  padding:10px 0;
+  gap:4px;
+  padding:12px 0;
+  max-width:820px;
 }
 
 .brand b{
-  font-size:15px;
-  font-weight:600;
-  color:#111827;
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:.2px;
+  color:var(--accent);
 }
 
 .brand span{
   font-size:12px;
   color:var(--muted2);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
 
+/* Nav: ca „table of contents” */
 nav{
   display:flex;
-  gap:10px;
+  gap:12px;
   flex-wrap:wrap;
-  padding:10px 0;
+  padding:12px 0;
 }
 
 nav a{
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   font-size:13px;
-  padding:8px 12px;
-  border-radius:999px;
-  border:1px solid var(--line);
-  background:#fff;
-  color:var(--text);
-}
-
-nav a:hover{
-  background:#f3f4f6;
+  color:var(--muted);
   text-decoration:none;
+  padding:6px 0;
+  border-bottom:2px solid transparent;
+}
+nav a:hover{
+  color:var(--accent);
+  border-bottom-color:var(--accent);
 }
 
-/* Layout */
+/* Cards: minimal, ca pagină de jurnal */
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+
+.pad{padding:22px}
+
 .grid{
   display:grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap:16px;
+  grid-template-columns: 1.25fr .75fr;
+  gap:18px;
   margin-top:18px;
 }
 
@@ -96,73 +115,77 @@ nav a:hover{
   header{position:relative}
 }
 
-.card{
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-}
-
-.pad{padding:20px}
-
+/* Titluri: serif */
 h1{
   margin:0 0 12px;
-  font-size:28px;
-  font-weight:650;
+  font-size:30px;
+  font-weight:800;
   line-height:1.25;
+  color:var(--text);
 }
 
 h2{
   margin:0;
   font-size:18px;
+  font-weight:800;
+  color:var(--text);
 }
 
 .lead{
-  margin:0 0 10px;
+  margin:0 0 12px;
   color:var(--muted);
+  font-size:17px;
 }
 
 .sublead{
   margin:0;
   color:var(--muted2);
   font-size:13px;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
 
+/* Butoane: ca linkuri instituționale, fără „pills” */
 .btnRow{
   display:flex;
   flex-wrap:wrap;
-  gap:10px;
+  gap:12px;
   margin-top:14px;
 }
 
 .btn{
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   display:inline-flex;
   align-items:center;
-  gap:8px;
-  padding:10px 14px;
+  padding:10px 12px;
   border-radius:10px;
   border:1px solid var(--line);
-  background:#fff;
-  font-size:13px;
-  color:var(--text);
+  background:var(--paper2);
+  color:var(--muted);
   text-decoration:none;
 }
-
 .btn:hover{
-  background:#f3f4f6;
-  text-decoration:none;
+  color:var(--accent);
+  border-color:#d1d5db;
+  background:#ffffff;
 }
-
 .btn.primary{
   background:var(--accent);
   border-color:var(--accent);
-  color:white;
+  color:#fff;
+  text-decoration:none;
 }
-
 .btn.primary:hover{
-  filter:brightness(0.95);
+  background:#0b214d;
+  border-color:#0b214d;
+  color:#fff;
 }
 
+/* Text */
+p{margin:0 0 12px; color:var(--muted)}
+ul{margin:8px 0 0 18px; color:var(--muted)}
+li{margin:6px 0}
+
+/* Section headers */
 section{margin:18px 0}
 
 .secHead{
@@ -172,28 +195,21 @@ section{margin:18px 0}
   gap:10px;
   margin-bottom:12px;
 }
-
 .secHead small{
   color:var(--muted2);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
 
-p{margin:0 0 10px; color:var(--muted)}
-
-ul{margin:8px 0 0 18px; color:var(--muted)}
-li{margin:6px 0}
-
+/* Items: blocuri de jurnal */
 .cols{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:14px;
 }
-
-@media (max-width: 980px){
-  .cols{grid-template-columns:1fr}
-}
+@media (max-width: 980px){ .cols{grid-template-columns:1fr} }
 
 .item{
-  background:var(--paper2);
+  background:#ffffff;
   border:1px solid var(--line);
   border-radius:12px;
   padding:16px;
@@ -202,30 +218,32 @@ li{margin:6px 0}
 .item b{
   display:block;
   margin-bottom:6px;
-  font-weight:600;
-  color:#111827;
+  font-weight:800;
+  color:var(--text);
 }
 
 .meta{
   font-size:12px;
   color:var(--muted2);
   margin-top:6px;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
 
 .hr{
   height:1px;
   background:var(--line);
-  margin:14px 0;
+  margin:16px 0;
 }
 
+/* Footer */
 footer{
   margin-top:22px;
   border-top:1px solid var(--line);
   padding:16px 0 26px;
   font-size:12px;
   color:var(--muted2);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
-
 .footRow{
   display:flex;
   align-items:center;
@@ -233,7 +251,6 @@ footer{
   flex-wrap:wrap;
   gap:10px;
 }
-
 .mono{
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 }
