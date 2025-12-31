@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prof. dr. ing. Daniel-Constantin Anghel</title>
+  <meta name="description" content="Cursuri, articole și resurse despre proiectarea produselor, ergonomie, fabricație aditivă și Industry 5.0." />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+    header {
+      padding: 40px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #1e293b, #020617);
+    }
+    h1 {
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+    h2 {
+      margin-top: 40px;
+      font-size: 1.4rem;
+      color: #c7d2fe;
+    }
+    p {
+      max-width: 820px;
+      margin: 10px auto;
+      color: #cbd5f5;
+    }
+    section {
+      padding: 30px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .card {
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 16px;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: #6366f1;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .btn:hover {
+      background: #818cf8;
+    }
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #9ca3af;
+      padding: 30px;
+      border-top: 1px solid #1e293b;
+    }
+    .note {
+      font-size: 13px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Prof. dr. ing. Daniel-Constantin Anghel</h1>
+  <p>
+    Proiectarea produselor · Ergonomie · Fabricație aditivă · Industry 4.0 / 5.0
+  </p>
+</header>
+
+<section>
+  <h2>Despre acest site</h2>
+  <p>
+    Acest spațiu reunește cursuri, articole și materiale dedicate proiectării moderne,
+    ergonomiei și utilizării responsabile a tehnologiei în inginerie.
+  </p>
+  <p>
+    Accentul este pus pe legătura dintre om, produs și sistem – nu doar pe tehnologie,
+    ci pe modul în care aceasta este înțeleasă și utilizată.
+  </p>
+</section>
+
+<section>
+  <h2>Cursuri și direcții abordate</h2>
+
+  <div class="card">
+    <strong>Ergonomie și interacțiune om–mașină</strong>
+    <p>Evaluarea riscurilor, confort, performanță și proiectare centrată pe utilizator.</p>
+  </div>
+
+  <div class="card">
+    <strong>Concepția și dezvoltarea produselor</strong>
+    <p>Metode moderne de proiectare, gândire inginerească și integrarea funcțională.</p>
+  </div>
+
+  <div class="card">
+    <strong>Fabricație aditivă și Industry 5.0</strong>
+    <p>Proiectare pentru imprimare 3D, experimentare și legătura dintre tehnologie și factorul uman.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Asistent AI (în curs de integrare)</h2>
+  <div class="card">
+    <p>
+      Aici va fi disponibil un asistent AI care ajută la:
+    </p>
+    <ul>
+      <li>generarea de texte pentru articole și cursuri</li>
+      <li>prezentări academice</li>
+      <li>postări pentru diseminare științifică</li>
+      <li>structurarea ideilor și proiectelor</li>
+    </ul>
+
+    <p class="note">
+      Funcționalitatea va fi activată în curând.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <p>
+    Pentru colaborări academice, proiecte sau discuții profesionale:
+  </p>
+  <p>
+    📧 Email: <em>(adaugă aici adresa ta)</em><br/>
+    🔗 ORCID: 0000-0003-4803-0201
+  </p>
+</section>
+
+<footer>
+  © <span id="y"></span> Daniel-Constantin Anghel · Site personal
+</footer>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
