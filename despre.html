@@ -1,17 +1,17 @@
 <!doctype html>
 <html lang="ro">
 <head>
-  <meta charset="utf-8">
-  <title>Despre – Daniel-Constantin ANGHEL</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Despre — Daniel-Constantin ANGHEL</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header>
   <div class="wrap top">
     <div class="brand">
-      <b>Daniel-Constantin ANGHEL, Prof. dr. ing.</b>
-      <span>UNSTPB – Facultatea de Mecanică și Tehnologie</span>
+      <b>Daniel-Constantin ANGHEL, Prof. dr. ing. la UNSTPB, Facultatea de Mecanica si Tehnologie</b>
+      <span>Proiectarea produselor • Ergonomie • Fabricație aditivă • Industry 4.0 / 5.0</span>
     </div>
     <nav>
       <a href="index.html">Acasă</a>
@@ -26,20 +26,51 @@
 
 <main class="wrap">
   <section class="card pad">
-    <h1>Despre</h1>
+    <div class="secHead">
+      <h2>Despre</h2>
+      <small>profil și obiective</small>
+    </div>
 
     <p>
-      Activitatea mea didactică și de cercetare se concentrează asupra proiectării produselor,
-      ergonomiei și tehnologiilor moderne de fabricație, cu accent pe integrarea factorului uman
-      în procesele inginerești.
+      Activitatea mea didactică și de cercetare se concentrează asupra proiectării produselor, ergonomiei și tehnologiilor
+      moderne de fabricație, cu accent pe integrarea factorului uman în procesele inginerești.
     </p>
 
     <p>
-      Mă interesează în mod special relația dintre deciziile de proiectare,
-      performanța tehnică și utilizarea reală a produselor și sistemelor.
+      Mă interesează în mod special relația dintre cerințe, decizii de proiectare, performanța tehnică și utilizarea reală
+      a produselor și sistemelor. În predare, urmăresc claritate, structură și exemple aplicate.
     </p>
+
+    <div class="hr"></div>
+
+    <div class="cols">
+      <div class="item">
+        <b>Teme de interes</b>
+        <ul>
+          <li>Proiectare centrată pe utilizator</li>
+          <li>Evaluarea riscurilor ergonomice</li>
+          <li>Fabricație aditivă și DfAM</li>
+          <li>Industry 4.0/5.0 și factorul uman</li>
+        </ul>
+      </div>
+      <div class="item">
+        <b>Resurse</b>
+        <p class="meta">
+          Google Scholar: <a href="https://scholar.google.ro/citations?user=ZOl2sTkAAAAJ&hl=ro" target="_blank" rel="noopener">profil</a><br/>
+          ORCID: <a href="https://orcid.org/0000-0003-4803-0201" target="_blank" rel="noopener">0000-0003-4803-0201</a>
+        </p>
+      </div>
+    </div>
   </section>
+
+  <footer class="wrap">
+    <div class="footRow">
+      <div>© <span id="y"></span> Daniel-Constantin ANGHEL</div>
+      <div class="mono">UNSTPB • Facultatea de Mecanica si Tehnologie</div>
+    </div>
+  </footer>
 </main>
 
+<script>document.getElementById("y").textContent = new Date().getFullYear();</script>
 </body>
 </html>
