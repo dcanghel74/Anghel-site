@@ -3,467 +3,129 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Daniel-Constantin ANGHEL — UNSTPB, Facultatea de Mecanică și Tehnologie</title>
-  <meta name="description" content="Daniel-Constantin ANGHEL, Prof. dr. ing. la UNSTPB, Facultatea de Mecanică și Tehnologie. Proiectarea produselor, ergonomie, fabricație aditivă, Industry 4.0/5.0." />
-
-  <style>
-  :root{
-    --bg:#eef2f6;
-    --paper:#ffffff;
-    --paper2:#f9fafb;
-    --line:#d1d5db;
-    --text:#1f2933;
-    --muted:#4b5563;
-    --muted2:#6b7280;
-    --accent:#2563eb;
-    --shadow:0 10px 28px rgba(0,0,0,.08);
-    --radius:14px;
-    --max:1120px;
-  }
-
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0;
-    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-    color:var(--text);
-    background:var(--bg);
-    line-height:1.7;
-  }
-
-  a{color:var(--accent); text-decoration:none}
-  a:hover{text-decoration:underline}
-
-  .wrap{max-width:var(--max); margin:0 auto; padding:22px}
-
-  /* HEADER */
-  header{
-    position:sticky;
-    top:0;
-    z-index:50;
-    background:#ffffff;
-    border-bottom:1px solid var(--line);
-  }
-
-  .top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:14px;
-    flex-wrap:wrap;
-  }
-
-  .brand{
-    display:flex;
-    flex-direction:column;
-    gap:2px;
-    padding:10px 0;
-  }
-
-  .brand b{
-    font-size:15px;
-    font-weight:600;
-    color:#111827;
-  }
-
-  .brand span{
-    font-size:12px;
-    color:var(--muted2);
-  }
-
-  nav{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-  }
-
-  nav a{
-    font-size:13px;
-    padding:8px 12px;
-    border-radius:999px;
-    border:1px solid var(--line);
-    background:#fff;
-    color:var(--text);
-  }
-
-  nav a:hover{
-    background:#f3f4f6;
-  }
-
-  /* LAYOUT */
-  .grid{
-    display:grid;
-    grid-template-columns: 1.2fr .8fr;
-    gap:16px;
-    margin-top:18px;
-  }
-
-  @media (max-width: 980px){
-    .grid{grid-template-columns:1fr}
-    header{position:relative}
-  }
-
-  .card{
-    background:var(--paper);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-  }
-
-  .pad{padding:20px}
-
-  h1{
-    margin:0 0 12px;
-    font-size:28px;
-    font-weight:650;
-    line-height:1.25;
-  }
-
-  .lead{
-    margin:0 0 10px;
-    color:var(--muted);
-  }
-
-  .sublead{
-    margin:0;
-    color:var(--muted2);
-    font-size:13px;
-  }
-
-  .btnRow{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:14px;
-  }
-
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:10px 14px;
-    border-radius:10px;
-    border:1px solid var(--line);
-    background:#fff;
-    font-size:13px;
-    color:var(--text);
-  }
-
-  .btn.primary{
-    background:var(--accent);
-    border-color:var(--accent);
-    color:white;
-  }
-
-  .btn.primary:hover{
-    filter:brightness(0.95);
-  }
-
-  section{margin:18px 0}
-
-  .secHead{
-    display:flex;
-    align-items:baseline;
-    justify-content:space-between;
-    gap:10px;
-    margin-bottom:12px;
-  }
-
-  .secHead h2{
-    margin:0;
-    font-size:17px;
-  }
-
-  .secHead small{
-    color:var(--muted2);
-  }
-
-  p{margin:0 0 10px}
-
-  .cols{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
-  }
-
-  @media (max-width: 980px){
-    .cols{grid-template-columns:1fr}
-  }
-
-  .item{
-    background:var(--paper2);
-    border:1px solid var(--line);
-    border-radius:12px;
-    padding:16px;
-  }
-
-  .item b{
-    display:block;
-    margin-bottom:6px;
-    font-weight:600;
-  }
-
-  .meta{
-    font-size:12px;
-    color:var(--muted2);
-    margin-top:6px;
-  }
-
-  footer{
-    margin-top:22px;
-    border-top:1px solid var(--line);
-    padding:16px 0 26px;
-    font-size:12px;
-    color:var(--muted2);
-  }
-
-  .footRow{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:10px;
-  }
-  </style>
+  <title>Daniel-Constantin ANGHEL – UNSTPB</title>
+  <meta name="description" content="Daniel-Constantin ANGHEL, Prof. dr. ing. la UNSTPB. Proiectarea produselor, ergonomie, fabricație aditivă, Industry 4.0 / 5.0." />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 <header>
   <div class="wrap top">
     <div class="brand">
-      <b>Daniel-Constantin ANGHEL, Prof. dr. ing. la UNSTPB, Facultatea de Mecanica si Tehnologie</b>
+      <b>Daniel-Constantin ANGHEL, Prof. dr. ing. la UNSTPB, Facultatea de Mecanică și Tehnologie</b>
       <span>Proiectarea produselor • Ergonomie • Fabricație aditivă • Industry 4.0 / 5.0</span>
     </div>
-<nav>
-  <a href="index.html">Acasă</a>
-  <a href="despre.html">Despre</a>
-  <a href="directii.html">Direcții</a>
-  <a href="cursuri.html">Cursuri</a>
-  <a href="publicatii.html">Publicații</a>
-  <a href="contact.html">Contact</a>
-</nav>
+
+    <nav>
+      <a href="index.html">Acasă</a>
+      <a href="despre.html">Despre</a>
+      <a href="directii.html">Direcții</a>
+      <a href="cursuri.html">Cursuri</a>
+      <a href="publicatii.html">Publicații</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </div>
 </header>
 
 <main class="wrap">
-  <div class="grid">
-    <!-- HERO -->
-    <div class="card">
-      <div class="pad">
-        <h1>Proiectare inginerească orientată spre performanță, utilizator și context.</h1>
-        <p class="lead">
-          Activitatea mea urmărește integrarea proiectării produselor cu ergonomia și tehnologiile moderne de fabricație,
-          într-o perspectivă aplicată (industrie și educație) și coerentă (decizii de proiectare, evaluare, iterare).
-        </p>
-        <p class="sublead">
-          Acest site este un spațiu de prezentare și resurse. Pentru informații oficiale instituționale se folosesc canalele universitare.
-        </p>
 
-        <div class="btnRow">
-          <a class="btn primary" href="#contact">Contact rapid</a>
-          <a class="btn" href="mailto:dc.anghel@upb.ro">dc.anghel@upb.ro</a>
-          <a class="btn" href="https://scholar.google.ro/citations?user=ZOl2sTkAAAAJ&hl=ro" target="_blank" rel="noopener">Google Scholar</a>
-          <a class="btn" href="https://orcid.org/0000-0003-4803-0201" target="_blank" rel="noopener">ORCID</a>
-        </div>
-      </div>
+  <!-- HERO / INTRO -->
+  <section class="card pad">
+    <h1>Proiectare inginerească orientată spre oameni, sisteme și performanță</h1>
+
+    <p class="lead">
+      Activitatea mea didactică și de cercetare este axată pe proiectarea produselor,
+      ergonomie și integrarea tehnologiilor moderne în procesele industriale,
+      cu accent pe relația dintre om, sistem și decizia de proiectare.
+    </p>
+
+    <p class="sublead">
+      Acest site reunește informații despre domeniile mele de interes, cursuri,
+      direcții de cercetare și publicații științifice.
+    </p>
+
+    <div class="btnRow">
+      <a class="btn primary" href="despre.html">Despre activitatea mea</a>
+      <a class="btn" href="directii.html">Direcții de cercetare</a>
+      <a class="btn" href="cursuri.html">Cursuri</a>
+      <a class="btn" href="publicatii.html">Publicații</a>
+      <a class="btn" href="contact.html">Contact</a>
     </div>
+  </section>
 
-    <!-- QUICK PROFILE -->
-    <div class="card">
-      <div class="pad">
-        <div class="secHead">
-          <h2>Profil (sinteză)</h2>
-          <small>acces rapid</small>
-        </div>
+  <!-- SINTEZĂ -->
+  <section class="grid">
 
-        <div class="item">
-          <b>Domenii</b>
-          <ul>
-            <li>Ergonomie și interacțiune om–mașină</li>
-            <li>Concepția și dezvoltarea produselor</li>
-            <li>Fabricație aditivă și proiectare DfAM</li>
-            <li>Industry 4.0/5.0 și factorul uman</li>
-          </ul>
-        </div>
-
-        <div class="rule"></div>
-
-        <div class="item">
-          <b>Resurse</b>
-          <p class="meta">
-            Google Scholar: <a href="https://scholar.google.ro/citations?user=ZOl2sTkAAAAJ&hl=ro" target="_blank" rel="noopener">profilul de citări și publicații</a><br/>
-            ORCID: <a href="https://orcid.org/0000-0003-4803-0201" target="_blank" rel="noopener">0000-0003-4803-0201</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DESPRE -->
-  <section id="despre" class="card">
-    <div class="pad">
+    <div class="card pad">
       <div class="secHead">
-        <h2>Despre</h2>
-        <small>scopul site-ului</small>
+        <h2>Profil academic</h2>
+        <small>sinteză</small>
       </div>
+
       <p>
-        Acest site reunește activitatea didactică și științifică în domeniul proiectării produselor, ergonomiei și tehnologiilor moderne de fabricație.
-        Accentul este pus pe legătura dintre cerințe, decizii de proiectare, evaluare și impact asupra utilizatorului.
+        Sunt cadru didactic și cercetător în cadrul Universității Naționale de Știință și
+        Tehnologie POLITEHNICA București, Facultatea de Mecanică și Tehnologie.
       </p>
+
       <p>
-        Materialele sunt orientate spre claritate și aplicabilitate: exemple, metodologii și resurse utile pentru studenți, colegi și parteneri.
+        Activitatea mea urmărește dezvoltarea unei viziuni coerente asupra proiectării
+        produselor, în care ergonomia, tehnologia și factorul uman sunt integrate
+        într-un proces decizional rațional și reproductibil.
       </p>
-    </div>
-  </section>
 
-  <!-- DIRECTII -->
-  <section id="directii" class="card">
-    <div class="pad">
-      <div class="secHead">
-        <h2>Direcții</h2>
-        <small>teme și perspective</small>
-      </div>
+      <div class="hr"></div>
 
-      <div class="cols">
-        <div class="item">
-          <b>Ergonomie și interacțiune om–mașină</b>
-          <p>
-            Evaluarea riscurilor ergonomice, reducerea erorilor și a oboselii, proiectare centrată pe utilizator.
-            Abordări clasice și moderne, cu aplicații în sisteme industriale și educaționale.
-          </p>
-        </div>
-
-        <div class="item">
-          <b>Concepția și dezvoltarea produselor</b>
-          <p>
-            De la cerințe la soluții: integrarea funcțională, evaluarea variantelor și iterația de proiectare.
-            Accent pe structură, argumentare și calitatea deciziilor.
-          </p>
-        </div>
-
-        <div class="item">
-          <b>Fabricație aditivă și DfAM</b>
-          <p>
-            Proiectare pentru imprimare 3D, parametri tehnologici, calitate și precizie.
-            Metodologii reproductibile și evaluare bazată pe date.
-          </p>
-        </div>
-
-        <div class="item">
-          <b>Industry 4.0/5.0 și factorul uman</b>
-          <p>
-            Digitalizare și automatizare integrate cu dimensiunea umană: utilitate, adaptabilitate și responsabilitate în proiectare.
-          </p>
-        </div>
+      <div class="item">
+        <b>Domenii principale</b>
+        <ul>
+          <li>Ergonomie și interacțiune om–mașină</li>
+          <li>Concepția și dezvoltarea produselor</li>
+          <li>Fabricație aditivă și proiectare DfAM</li>
+          <li>Industry 4.0 / 5.0 și factorul uman</li>
+        </ul>
       </div>
     </div>
-  </section>
 
-  <!-- CURSURI -->
-  <section id="cursuri" class="card">
-    <div class="pad">
+    <div class="card pad">
       <div class="secHead">
-        <h2>Cursuri</h2>
-        <small>descrieri scurte</small>
-      </div>
-
-      <div class="cols">
-        <div class="item">
-          <b>Ergonomie și interfețe om–mașină</b>
-          <p>
-            Principii și metode de analiză ergonomică, evaluarea solicitării, prevenirea erorilor și proiectare centrată pe utilizator.
-          </p>
-          <div class="meta">Util pentru: inginerie industrială, logistică, proiectare, management operațional.</div>
-        </div>
-
-        <div class="item">
-          <b>Concepția și dezvoltarea produselor</b>
-          <p>
-            Metode de structurare a cerințelor, concepție, evaluarea variantelor și documentarea deciziilor de proiect.
-          </p>
-          <div class="meta">Util pentru: proiectare, inovare, dezvoltare produs, management tehnic.</div>
-        </div>
-
-        <div class="item">
-          <b>Tehnologii de fabricație aditivă (FDM) și DfAM</b>
-          <p>
-            Proiectare pentru fabricație aditivă, parametri tehnologici, abateri dimensionale și calitate în prototipare.
-          </p>
-          <div class="meta">Util pentru: prototipare rapidă, optimizare, validare, laborator.</div>
-        </div>
-
-        <div class="item">
-          <b>Industry 4.0/5.0 (perspectivă aplicată)</b>
-          <p>
-            Integrarea tehnologiilor digitale cu organizarea proceselor și factorul uman: de la conectivitate la utilitate.
-          </p>
-          <div class="meta">Util pentru: sisteme de producție, transformare digitală, calitate.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PUBLICATII -->
-  <section id="publicatii" class="card">
-    <div class="pad">
-      <div class="secHead">
-        <h2>Publicații</h2>
-        <small>acces prin Google Scholar</small>
+        <h2>Acces rapid</h2>
+        <small>resurse externe</small>
       </div>
 
       <div class="item">
-        <b>Listă completă și citări</b>
-        <p>
-          Lista actualizată a publicațiilor și indicatorii de citare sunt disponibile în profilul meu Google Scholar:
-        </p>
-        <p class="mono">
+        <b>Profil academic</b>
+        <p class="meta">
+          Google Scholar:<br>
           <a href="https://scholar.google.ro/citations?user=ZOl2sTkAAAAJ&hl=ro" target="_blank" rel="noopener">
-            https://scholar.google.ro/citations?user=ZOl2sTkAAAAJ&hl=ro
+            https://scholar.google.ro/citations?user=ZOl2sTkAAAAJ
           </a>
         </p>
-        <div class="meta">
-          La cerere, pot publica și o selecție comentată (rezumat + idei cheie + aplicații), pentru cititori non-specialiști.
-        </div>
+      </div>
+
+      <div class="item">
+        <b>Identificare cercetător</b>
+        <p class="meta">
+          ORCID:<br>
+          <a href="https://orcid.org/0000-0003-4803-0201" target="_blank" rel="noopener">
+            0000-0003-4803-0201
+          </a>
+        </p>
+      </div>
+
+      <div class="item">
+        <b>Contact direct</b>
+        <p class="meta">
+          Email: <a href="mailto:dc.anghel@upb.ro">dc.anghel@upb.ro</a>
+        </p>
       </div>
     </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="card">
-    <div class="pad">
-      <div class="secHead">
-        <h2>Contact</h2>
-        <small>colaborări • proiecte • dialog</small>
-      </div>
-
-      <div class="cols">
-        <div class="item">
-          <b>Date de contact</b>
-          <p>
-            Email: <a href="mailto:dc.anghel@upb.ro">dc.anghel@upb.ro</a>
-          </p>
-          <p class="meta">
-            Vă rog să evitați trimiterea de date personale sensibile prin formulare publice.
-          </p>
-        </div>
-
-        <div class="item">
-          <b>Profil academic</b>
-          <p>
-            Google Scholar:
-            <a href="https://scholar.google.ro/citations?user=ZOl2sTkAAAAJ&hl=ro" target="_blank" rel="noopener">profil</a><br/>
-            ORCID:
-            <a href="https://orcid.org/0000-0003-4803-0201" target="_blank" rel="noopener">0000-0003-4803-0201</a>
-          </p>
-        </div>
-      </div>
-    </div>
   </section>
 
   <footer class="wrap">
     <div class="footRow">
       <div>© <span id="y"></span> Daniel-Constantin ANGHEL</div>
-      <div class="mono">UNSTPB • Facultatea de Mecanica si Tehnologie</div>
+      <div class="mono">UNSTPB • Facultatea de Mecanică și Tehnologie</div>
     </div>
   </footer>
 </main>
