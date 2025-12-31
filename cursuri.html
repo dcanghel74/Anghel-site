@@ -3,14 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cursuri — Daniel-Constantin ANGHEL</title>
+  <title>Cursuri (PDF) — Daniel-Constantin ANGHEL</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 <header>
   <div class="wrap top">
     <div class="brand">
-      <b>Daniel-Constantin ANGHEL, Prof. dr. ing. la UNSTPB, Facultatea de Mecanica si Tehnologie</b>
+      <b>Daniel-Constantin ANGHEL, Prof. dr. ing. la UNSTPB, Facultatea de Mecanică și Tehnologie</b>
       <span>Proiectarea produselor • Ergonomie • Fabricație aditivă • Industry 4.0 / 5.0</span>
     </div>
     <nav>
@@ -27,51 +28,68 @@
 <main class="wrap">
   <section class="card pad">
     <div class="secHead">
-      <h2>Cursuri</h2>
-      <small>descrieri scurte</small>
+      <h2>Cursuri (PDF)</h2>
+      <small>materiale disponibile pentru descărcare / lectură</small>
     </div>
 
-    <div class="cols">
-      <div class="item">
-        <b>Ergonomie și interacțiune om–mașină</b>
-        <p>Principii și metode de analiză ergonomică, solicitare, prevenirea erorilor, proiectare centrată pe utilizator.</p>
-        <div class="meta">Util pentru: inginerie industrială, logistică, proiectare, management operațional.</div>
-      </div>
+    <p>
+      Mai jos găsiți materialele de curs organizate pe discipline. Fiecare link deschide un fișier PDF.
+    </p>
 
-      <div class="item">
-        <b>Concepția și dezvoltarea produselor</b>
-        <p>Structurarea cerințelor, concepție, evaluarea variantelor și documentarea deciziilor de proiect.</p>
-        <div class="meta">Util pentru: proiectare, inovare, dezvoltare produs, management tehnic.</div>
-      </div>
+    <div class="hr"></div>
 
-      <div class="item">
-        <b>Tehnologii de fabricație aditivă (FDM) și DfAM</b>
-        <p>Proiectare pentru fabricație aditivă, parametri tehnologici, abateri dimensionale și calitate în prototipare.</p>
-        <div class="meta">Util pentru: prototipare rapidă, optimizare, validare, laborator.</div>
-      </div>
+    <!-- ERGONOMIE -->
+    <div class="item">
+      <b>Ergonomie</b>
+      <p class="meta">Folder: <span class="mono">/cursuri/ergonomie/</span></p>
 
-      <div class="item">
-        <b>Industry 4.0/5.0 (perspectivă aplicată)</b>
-        <p>Integrarea tehnologiilor digitale cu organizarea proceselor și factorul uman: de la conectivitate la utilitate.</p>
-        <div class="meta">Util pentru: sisteme de producție, transformare digitală, calitate.</div>
-      </div>
+      <ul>
+        <li><a href="cursuri/ergonomie/Curs_01_Introducere.pdf" target="_blank">Curs 01 — Introducere</a></li>
+        <li><a href="cursuri/ergonomie/Curs_02_Antropometrie.pdf" target="_blank">Curs 02 — Antropometrie</a></li>
+        <li><a href="cursuri/ergonomie/Curs_03_Risc_ergonomic.pdf" target="_blank">Curs 03 — Evaluarea riscurilor</a></li>
+      </ul>
+    </div>
+
+    <!-- PROIECTARE -->
+    <div class="item">
+      <b>Concepția și dezvoltarea produselor</b>
+      <p class="meta">Folder: <span class="mono">/cursuri/proiectare-produs/</span></p>
+
+      <ul>
+        <li><a href="cursuri/proiectare-produs/Curs_01_Cerințe_si_concepte.pdf" target="_blank">Curs 01 — Cerințe și concepte</a></li>
+        <li><a href="cursuri/proiectare-produs/Curs_02_Evaluare_variante.pdf" target="_blank">Curs 02 — Evaluarea variantelor</a></li>
+      </ul>
+    </div>
+
+    <!-- FAB ADITIVA -->
+    <div class="item">
+      <b>Fabricație aditivă (FDM) și DfAM</b>
+      <p class="meta">Folder: <span class="mono">/cursuri/fabricatie-aditiva/</span></p>
+
+      <ul>
+        <li><a href="cursuri/fabricatie-aditiva/Curs_01_Principii_FDM.pdf" target="_blank">Curs 01 — Principii FDM</a></li>
+        <li><a href="cursuri/fabricatie-aditiva/Curs_02_Parametri_si_calitate.pdf" target="_blank">Curs 02 — Parametri și calitate</a></li>
+      </ul>
     </div>
 
     <div class="hr"></div>
 
     <p class="meta">
-      Dacă dorești, putem adăuga aici: fișe de curs, bibliografie selectivă, resurse pentru studenți și anunțuri.
+      Notă: dacă un link nu funcționează, înseamnă că fișierul nu a fost încă încărcat sau numele lui diferă.
+      Păstrează exact aceleași nume în repo ca în linkurile de aici.
     </p>
   </section>
 
   <footer class="wrap">
     <div class="footRow">
       <div>© <span id="y"></span> Daniel-Constantin ANGHEL</div>
-      <div class="mono">UNSTPB • Facultatea de Mecanica si Tehnologie</div>
+      <div class="mono">UNSTPB • Facultatea de Mecanică și Tehnologie</div>
     </div>
   </footer>
 </main>
 
-<script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
