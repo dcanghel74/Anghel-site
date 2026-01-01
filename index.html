@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Daniel-Constantin ANGHEL – UNSTPB</title>
-  <meta name="description" content="Daniel-Constantin ANGHEL - POLITEHNICA Bucuresti. Proiectarea produselor, ergonomie, fabricație aditivă, Industry 4.0 / 5.0." />
+  <title>Daniel-Constantin ANGHEL – UNSTPB-CUP</title>
+  <meta name="description" content="Daniel-Constantin ANGHEL, Prof. dr. ing. la UNSTPB-CUP, Facultatea de Mecanică și Tehnologie. Proiectarea produselor, ergonomie, fabricație aditivă, Industry 4.0/5.0." />
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,8 +12,8 @@
 <header>
   <div class="wrap top">
     <div class="brand">
-      <b>Daniel-Constantin ANGHEL</b>
-      <span>POLITEHNICA Bucuresti, Facultatea de Mecanică și Tehnologie</span>
+      <div class="brand-line">Daniel-Constantin ANGHEL, Prof. dr. ing. la UNSTPB-CUP, Facultatea de Mecanică și Tehnologie</div>
+      <div class="brand-line">Proiectarea produselor • Ergonomie • Fabricație aditivă • Industry 4.0 / 5.0</div>
     </div>
 
     <nav>
@@ -27,35 +27,47 @@
   </div>
 </header>
 
+<!-- Banda anunțuri (se încarcă din announcements.json) -->
+<div class="ticker" aria-label="Anunțuri">
+  <div class="wrap">
+    <div class="ticker-row">
+      <div class="ticker-label">Anunțuri</div>
+      <div class="ticker-viewport">
+        <div id="ticker-track" class="ticker-track">
+          <!-- populat din JSON -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <main class="wrap">
 
-  <!-- HERO / INTRO -->
+  <!-- HERO -->
   <section class="card pad">
     <h1>Proiectare inginerească orientată spre oameni, sisteme și performanță</h1>
 
     <p class="lead">
       Activitatea mea didactică și de cercetare este axată pe proiectarea produselor,
-      ergonomie și integrarea tehnologiilor moderne în procesele industriale,
-      cu accent pe relația dintre om, sistem și decizia de proiectare.
+      ergonomie și integrarea tehnologiilor moderne în procesele industriale, cu accent pe
+      relația dintre om, sistem și decizia de proiectare.
     </p>
 
     <p class="sublead">
-      Acest site reunește informații despre domeniile mele de interes, cursuri,
-      direcții de cercetare și publicații științifice.
+      Site-ul reunește informații despre domenii, cursuri, direcții de cercetare și acces rapid la publicații.
     </p>
 
     <div class="btnRow">
-      <a class="btn primary" href="despre.html">Despre activitatea mea</a>
-      <a class="btn" href="directii.html">Direcții de cercetare</a>
+      <a class="btn primary" href="despre.html">Despre</a>
+      <a class="btn" href="directii.html">Direcții</a>
       <a class="btn" href="cursuri.html">Cursuri</a>
       <a class="btn" href="publicatii.html">Publicații</a>
       <a class="btn" href="contact.html">Contact</a>
     </div>
   </section>
 
-  <!-- SINTEZĂ -->
+  <!-- OVERVIEW GRID -->
   <section class="grid">
-
     <div class="card pad">
       <div class="secHead">
         <h2>Profil academic</h2>
@@ -63,14 +75,13 @@
       </div>
 
       <p>
-        Sunt cadru didactic și cercetător (prof. dr. habil. ing.) în cadrul Universității Naționale de Știință și
-        Tehnologie POLITEHNICA București, Facultatea de Mecanică și Tehnologie.
+        Sunt cadru didactic și cercetător în cadrul Universității Naționale de Știință și Tehnologie
+        POLITEHNICA București – Centrul Universitar Pitești (UNSTPB-CUP), Facultatea de Mecanică și Tehnologie.
       </p>
 
       <p>
-        Activitatea mea urmărește dezvoltarea unei viziuni coerente asupra proiectării
-        produselor, în care ergonomia, tehnologia și factorul uman sunt integrate
-        într-un proces decizional rațional și reproductibil.
+        Abordarea mea urmărește integrarea proiectării produselor cu ergonomia și fabricația modernă,
+        într-un cadru aplicat și reproductibil: cerințe → decizii → evaluare → iterare.
       </p>
 
       <div class="hr"></div>
@@ -80,7 +91,7 @@
         <ul>
           <li>Ergonomie și interacțiune om–mașină</li>
           <li>Concepția și dezvoltarea produselor</li>
-          <li>Fabricație aditivă și proiectare DfAM</li>
+          <li>Fabricație aditivă și DfAM</li>
           <li>Industry 4.0 / 5.0 și factorul uman</li>
         </ul>
       </div>
@@ -89,23 +100,21 @@
     <div class="card pad">
       <div class="secHead">
         <h2>Acces rapid</h2>
-        <small>resurse externe</small>
+        <small>profiluri și contact</small>
       </div>
 
       <div class="item">
-        <b>Profil academic</b>
+        <b>Google Scholar</b>
         <p class="meta">
-          Google Scholar:<br>
           <a href="https://scholar.google.ro/citations?user=ZOl2sTkAAAAJ&hl=ro" target="_blank" rel="noopener">
-            https://scholar.google.ro/citations?user=ZOl2sTkAAAAJ
+            Profil public (publicații & citări)
           </a>
         </p>
       </div>
 
       <div class="item">
-        <b>Identificare cercetător</b>
+        <b>ORCID</b>
         <p class="meta">
-          ORCID:<br>
           <a href="https://orcid.org/0000-0003-4803-0201" target="_blank" rel="noopener">
             0000-0003-4803-0201
           </a>
@@ -113,25 +122,68 @@
       </div>
 
       <div class="item">
-        <b>Contact direct</b>
+        <b>Contact</b>
         <p class="meta">
-          Email: <a href="mailto:dc.anghel@upb.ro">dc.anghel@upb.ro</a>
+          <a href="mailto:dc.anghel@upb.ro">dc.anghel@upb.ro</a>
         </p>
       </div>
     </div>
-
   </section>
 
   <footer class="wrap">
     <div class="footRow">
       <div>© <span id="y"></span> Daniel-Constantin ANGHEL</div>
-      <div class="mono">UNSTPB • Facultatea de Mecanică și Tehnologie</div>
+      <div class="mono">UNSTPB-CUP • Facultatea de Mecanică și Tehnologie</div>
     </div>
   </footer>
 </main>
 
 <script>
+  // Footer year
   document.getElementById("y").textContent = new Date().getFullYear();
+
+  // Ticker loader (announcements.json)
+  (function(){
+    const track = document.getElementById("ticker-track");
+    if (!track) return;
+
+    fetch("announcements.json", { cache: "no-store" })
+      .then(r => r.json())
+      .then(data => {
+        const items = (data && data.items) ? data.items : [];
+        if (!items.length) {
+          track.innerHTML = '<span class="ticker-item">—</span>';
+          return;
+        }
+
+        // Duplicate for smooth loop
+        const doubled = items.concat(items);
+
+        doubled.forEach((it, idx) => {
+          const a = document.createElement("a");
+          a.className = "ticker-item";
+          a.href = it.link || "#";
+          a.textContent = it.text || "";
+
+          // external links open in new tab
+          if (typeof a.href === "string" && (a.href.startsWith("http://") || a.href.startsWith("https://"))) {
+            a.target = "_blank";
+            a.rel = "noopener";
+          }
+
+          track.appendChild(a);
+
+          const sep = document.createElement("span");
+          sep.className = "ticker-sep";
+          sep.textContent = " • ";
+          track.appendChild(sep);
+        });
+      })
+      .catch(() => {
+        track.innerHTML = '<span class="ticker-item">Anunțurile nu pot fi încărcate momentan.</span>';
+      });
+  })();
 </script>
+
 </body>
 </html>
