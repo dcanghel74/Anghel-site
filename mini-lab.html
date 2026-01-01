@@ -2,456 +2,513 @@
 <html lang="ro">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mini-Lab Interactiv</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mini-Lab – Daniel-Constantin ANGHEL</title>
+  <meta name="description" content="Mini-laborator interactiv: FDM (precizie), Ergonomie (risc), Industria 4.0→5.0 (echilibru)." />
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Stiluri specifice Mini-Lab (nu afectează restul site-ului) -->
   <style>
-    :root{
-      --bg:#f6f7fb; --card:#fff; --ink:#111827; --muted:#6b7280; --line:#e5e7eb;
-      --accent:#111827;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,Segoe UI,Arial;background:var(--bg);color:var(--ink)}
-    header{background:var(--accent);color:#fff;padding:18px 16px}
-    .wrap{max-width:1100px;margin:0 auto;padding:16px}
-    h1{margin:0;font-size:20px}
-    .sub{margin:6px 0 0;color:#e5e7eb;font-size:13px}
-    .grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
-    @media(min-width:900px){ .grid{grid-template-columns:1.1fr .9fr} }
-    .card{background:var(--card);border-radius:16px;box-shadow:0 10px 26px rgba(0,0,0,.08);overflow:hidden}
-    .tabs{display:flex;gap:6px;padding:10px;border-bottom:1px solid var(--line);background:#fafafa;flex-wrap:wrap}
-    .tab{border:1px solid var(--line);background:#fff;padding:10px 12px;border-radius:999px;cursor:pointer;font-size:13px}
-    .tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-    .pane{padding:14px}
-    .row{display:grid;grid-template-columns:1fr;gap:10px;margin:10px 0}
-    @media(min-width:700px){ .row{grid-template-columns:1fr 1fr} }
-    .field{border:1px solid var(--line);border-radius:14px;padding:12px}
-    .label{font-size:13px;color:var(--muted);margin-bottom:8px}
-    input[type="range"]{width:100%}
-    select{width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#fff}
-    .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-    .k{border:1px solid var(--line);border-radius:14px;padding:12px}
-    .k .t{font-size:12px;color:var(--muted)}
-    .k .v{font-size:18px;font-weight:700;margin-top:4px}
-    .note{color:var(--muted);font-size:13px;line-height:1.4}
-    .out{border-top:1px solid var(--line);padding:14px;background:#fcfcfd}
-    .out h3{margin:0 0 8px;font-size:14px}
-    .out p{margin:6px 0;line-height:1.45}
-    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef2ff;border:1px solid #c7d2fe;font-size:12px;margin-right:6px;margin-top:6px}
-    .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    button{cursor:pointer;border:0;border-radius:12px;padding:10px 12px;background:var(--accent);color:#fff}
-    .ghost{background:#e5e7eb;color:#111827}
-    .side h2{margin:0;font-size:16px}
-    .side ul{margin:10px 0 0;padding-left:18px;color:var(--muted);line-height:1.5}
-    .footer{margin-top:10px;color:var(--muted);font-size:12px}
-    a{color:inherit}
+    /* Layout */
+    .ml-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+    @media(min-width:900px){ .ml-grid{grid-template-columns:1.1fr .9fr} }
+
+    /* Tabs */
+    .ml-tabs{display:flex;gap:6px;flex-wrap:wrap;padding:10px;border-bottom:1px solid #e5e7eb;background:#fafafa}
+    .ml-tab{border:1px solid #e5e7eb;background:#fff;padding:10px 12px;border-radius:999px;cursor:pointer;font-size:13px}
+    .ml-tab.active{background:#111827;color:#fff;border-color:#111827}
+
+    /* Panes + form */
+    .ml-pane{padding:14px}
+    .ml-row{display:grid;grid-template-columns:1fr;gap:10px;margin:10px 0}
+    @media(min-width:700px){ .ml-row{grid-template-columns:1fr 1fr} }
+    .ml-field{border:1px solid #e5e7eb;border-radius:14px;padding:12px;background:#fff}
+    .ml-label{font-size:13px;color:#6b7280;margin-bottom:8px}
+    .ml-note{color:#6b7280;font-size:13px;line-height:1.4;margin-top:6px}
+    .ml-field input[type="range"]{width:100%}
+    .ml-field select{width:100%;padding:10px;border-radius:10px;border:1px solid #e5e7eb;background:#fff}
+
+    /* KPIs */
+    .ml-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
+    @media(max-width:600px){ .ml-kpi{grid-template-columns:1fr} }
+    .ml-k{border:1px solid #e5e7eb;border-radius:14px;padding:12px;background:#fff}
+    .ml-k .t{font-size:12px;color:#6b7280}
+    .ml-k .v{font-size:18px;font-weight:700;margin-top:4px}
+
+    /* Output */
+    .ml-out{border-top:1px solid #e5e7eb;padding:14px;background:#fcfcfd}
+    .ml-out h3{margin:0 0 8px;font-size:14px}
+    .ml-out p{margin:6px 0;line-height:1.45}
+    .ml-pills{margin-top:8px}
+    .ml-pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef2ff;border:1px solid #c7d2fe;font-size:12px;margin-right:6px;margin-top:6px}
+
+    /* Buttons (aliniate cu stilul site-ului, fără să-l modifice) */
+    .ml-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .ml-btn{display:inline-block;cursor:pointer;border:0;border-radius:12px;padding:10px 12px;background:#111827;color:#fff}
+    .ml-btn.ghost{background:#e5e7eb;color:#111827}
+
+    /* Side card */
+    .ml-side h2{margin:0;font-size:16px}
+    .ml-side ul{margin:10px 0 0;padding-left:18px;color:#6b7280;line-height:1.5}
+    .ml-footnote{margin-top:10px;color:#6b7280;font-size:12px}
   </style>
 </head>
+
 <body>
-<header>
-  <div class="wrap">
-    <h1>Mini-Lab Interactiv</h1>
-    <div class="sub">Micro-experimente pentru FDM, Ergonomie și Industry 4.0 → 5.0 (educațional, conceptual)</div>
-  </div>
-</header>
+  <!-- Header identic ca în index.html -->
+  <header>
+    <div class="wrap top">
+      <div class="brand">
+        <div class="brand-line">Daniel-Constantin ANGHEL</div>
+        <div class="brand-line">POLITEHNICA Bucuresti, Facultatea de Mecanică și Tehnologie</div>
+      </div>
 
-<div class="wrap grid">
-  <!-- MAIN -->
-  <div class="card">
-    <div class="tabs">
-      <div class="tab active" data-tab="fdm">FDM • Precizie</div>
-      <div class="tab" data-tab="ergo">Ergonomie • Risc</div>
-      <div class="tab" data-tab="i45">Industria 4→5 • Echilibru</div>
+      <nav>
+        <a href="index.html">Acasă</a>
+        <a href="despre.html">Despre</a>
+        <a href="directii.html">Direcții</a>
+        <a href="cursuri.html">Cursuri</a>
+        <a href="publicatii.html">Publicații</a>
+        <a href="mini-lab.html">Mini-Lab</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- FDM -->
-    <div class="pane" id="pane-fdm">
-      <div class="kpi">
-        <div class="k"><div class="t">Scor stabilitate proces</div><div class="v" id="fdm-score">—</div></div>
-        <div class="k"><div class="t">Risc de abateri</div><div class="v" id="fdm-risk">—</div></div>
-        <div class="k"><div class="t">Recomandare</div><div class="v" id="fdm-rec">—</div></div>
+  <main class="wrap">
+    <!-- INTRO -->
+    <section class="card pad">
+      <div class="secHead">
+        <h1 style="margin:0">Mini-Lab Interactiv</h1>
+        <small>micro-experimente conceptuale</small>
       </div>
 
-      <div class="row">
-        <div class="field">
-          <div class="label">Înălțime strat (mm)</div>
-          <input id="layer" type="range" min="0.10" max="0.30" step="0.01" value="0.20">
-          <div class="note"><b id="layer-v"></b> — straturi mai fine: detaliu mai bun, dar timp mai mare.</div>
+      <p class="lead">
+        Un spațiu rapid de explorare pentru <b>FDM</b> (precizie), <b>Ergonomie</b> (risc) și
+        <b>Industria 4.0 → 5.0</b> (echilibru om–tehnologie).
+      </p>
+
+      <p class="sublead">
+        Notă: modelul este <b>didactic</b> (heuristic), nu un calculator normativ. Scopul este să evidențieze relațiile
+        dintre parametri și consecințe, într-un limbaj clar.
+      </p>
+    </section>
+
+    <section class="ml-grid">
+      <!-- MAIN -->
+      <div class="card">
+        <div class="ml-tabs" role="tablist" aria-label="Mini-Lab">
+          <button class="ml-tab active" data-tab="fdm" role="tab" aria-selected="true" type="button">FDM • Precizie</button>
+          <button class="ml-tab" data-tab="ergo" role="tab" aria-selected="false" type="button">Ergonomie • Risc</button>
+          <button class="ml-tab" data-tab="i45" role="tab" aria-selected="false" type="button">Industria 4→5 • Echilibru</button>
         </div>
-        <div class="field">
-          <div class="label">Viteză printare (mm/s)</div>
-          <input id="speed" type="range" min="30" max="120" step="5" value="60">
-          <div class="note"><b id="speed-v"></b> — viteza mare poate crește vibrația și inconsistența depunerii.</div>
+
+        <!-- FDM -->
+        <div class="ml-pane" id="pane-fdm">
+          <div class="ml-kpi">
+            <div class="ml-k"><div class="t">Scor stabilitate proces</div><div class="v" id="fdm-score">—</div></div>
+            <div class="ml-k"><div class="t">Risc de abateri</div><div class="v" id="fdm-risk">—</div></div>
+            <div class="ml-k"><div class="t">Recomandare</div><div class="v" id="fdm-rec">—</div></div>
+          </div>
+
+          <div class="ml-row">
+            <div class="ml-field">
+              <div class="ml-label">Înălțime strat (mm)</div>
+              <input id="layer" type="range" min="0.10" max="0.30" step="0.01" value="0.20">
+              <div class="ml-note"><b id="layer-v"></b> — straturi mai fine: detaliu mai bun, dar timp mai mare.</div>
+            </div>
+
+            <div class="ml-field">
+              <div class="ml-label">Viteză printare (mm/s)</div>
+              <input id="speed" type="range" min="30" max="120" step="5" value="60">
+              <div class="ml-note"><b id="speed-v"></b> — viteza mare poate crește vibrația și inconsistența depunerii.</div>
+            </div>
+          </div>
+
+          <div class="ml-row">
+            <div class="ml-field">
+              <div class="ml-label">Răcire (fan)</div>
+              <select id="cool">
+                <option value="high" selected>Ridicată</option>
+                <option value="mid">Medie</option>
+                <option value="low">Scăzută</option>
+              </select>
+              <div class="ml-note">Răcirea optimă depinde de material și geometrie; extremelor le corespund riscuri diferite.</div>
+            </div>
+
+            <div class="ml-field">
+              <div class="ml-label">Material (simplificat)</div>
+              <select id="mat">
+                <option value="pla" selected>PLA</option>
+                <option value="petg">PETG</option>
+                <option value="abs">ABS</option>
+              </select>
+              <div class="ml-note">ABS este mai sensibil la contracții/warp; PLA este mai „iertător”.</div>
+            </div>
+          </div>
+
+          <div class="ml-out">
+            <h3>Explicație (conceptual)</h3>
+            <p id="fdm-text"></p>
+            <div class="ml-pills" id="fdm-tags"></div>
+            <div class="ml-btns">
+              <button class="ml-btn ghost" id="fdm-reset" type="button">Reset</button>
+              <button class="ml-btn" id="fdm-example" type="button">Setări „echilibrate”</button>
+            </div>
+          </div>
         </div>
+
+        <!-- ERGO -->
+        <div class="ml-pane" id="pane-ergo" style="display:none">
+          <div class="ml-kpi">
+            <div class="ml-k"><div class="t">Scor risc (0–100)</div><div class="v" id="ergo-score">—</div></div>
+            <div class="ml-k"><div class="t">Nivel</div><div class="v" id="ergo-level">—</div></div>
+            <div class="ml-k"><div class="t">Prioritate acțiuni</div><div class="v" id="ergo-prio">—</div></div>
+          </div>
+
+          <div class="ml-row">
+            <div class="ml-field">
+              <div class="ml-label">Repetitivitate (cicluri/min)</div>
+              <input id="rep" type="range" min="2" max="30" step="1" value="12">
+              <div class="ml-note"><b id="rep-v"></b> — repetitivitatea mare crește încărcarea cumulativă.</div>
+            </div>
+
+            <div class="ml-field">
+              <div class="ml-label">Forță percepută</div>
+              <select id="force">
+                <option value="low">Mică</option>
+                <option value="mid" selected>Medie</option>
+                <option value="high">Mare</option>
+              </select>
+              <div class="ml-note">Forța + repetitivitatea cresc riscul musculo-scheletal.</div>
+            </div>
+          </div>
+
+          <div class="ml-row">
+            <div class="ml-field">
+              <div class="ml-label">Postură (trunchi/umeri)</div>
+              <select id="post">
+                <option value="neutral" selected>Neutră</option>
+                <option value="bent">Aplecat</option>
+                <option value="overhead">Brațe ridicate</option>
+              </select>
+              <div class="ml-note">Postura nefavorabilă amplifică riscul chiar și la forțe mici.</div>
+            </div>
+
+            <div class="ml-field">
+              <div class="ml-label">Pauze (min/oră)</div>
+              <input id="breaks" type="range" min="0" max="15" step="1" value="5">
+              <div class="ml-note"><b id="breaks-v"></b> — micro-pauzele reduc încărcarea cumulativă.</div>
+            </div>
+          </div>
+
+          <div class="ml-out">
+            <h3>Recomandări rapide</h3>
+            <p id="ergo-text"></p>
+            <div class="ml-pills" id="ergo-tags"></div>
+            <div class="ml-btns">
+              <button class="ml-btn ghost" id="ergo-reset" type="button">Reset</button>
+              <button class="ml-btn" id="ergo-example" type="button">Scenariu „problematic”</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- I4->I5 -->
+        <div class="ml-pane" id="pane-i45" style="display:none">
+          <div class="ml-kpi">
+            <div class="ml-k"><div class="t">Automatizare</div><div class="v" id="i45-a">—</div></div>
+            <div class="ml-k"><div class="t">Centrare pe om</div><div class="v" id="i45-h">—</div></div>
+            <div class="ml-k"><div class="t">Echilibru (0–100)</div><div class="v" id="i45-b">—</div></div>
+          </div>
+
+          <div class="ml-row">
+            <div class="ml-field">
+              <div class="ml-label">Nivel digitalizare</div>
+              <input id="dig" type="range" min="0" max="100" step="5" value="70">
+              <div class="ml-note"><b id="dig-v"></b> — senzori, date, conectivitate, vizibilitate în timp real.</div>
+            </div>
+
+            <div class="ml-field">
+              <div class="ml-label">Nivel autonomie operator</div>
+              <input id="aut" type="range" min="0" max="100" step="5" value="55">
+              <div class="ml-note"><b id="aut-v"></b> — decizie locală, competențe, implicare, feedback.</div>
+            </div>
+          </div>
+
+          <div class="ml-row">
+            <div class="ml-field">
+              <div class="ml-label">Obiectiv dominant</div>
+              <select id="goal">
+                <option value="throughput" selected>Productivitate</option>
+                <option value="quality">Calitate</option>
+                <option value="sustain">Sustenabilitate</option>
+                <option value="wellbeing">Bunăstare / ergonomie</option>
+              </select>
+              <div class="ml-note">Industry 5.0 urmărește echilibru: productivitate + om + sustenabilitate.</div>
+            </div>
+
+            <div class="ml-field">
+              <div class="ml-label">Nivel suport AI pentru operator</div>
+              <select id="ai">
+                <option value="none">Fără</option>
+                <option value="assist" selected>Asistență (recomandări)</option>
+                <option value="adaptive">Adaptiv (interfață + sarcini)</option>
+              </select>
+              <div class="ml-note">AI-ul bun amplifică decizia umană, nu o înlocuiește.</div>
+            </div>
+          </div>
+
+          <div class="ml-out">
+            <h3>Interpretare</h3>
+            <p id="i45-text"></p>
+            <div class="ml-pills" id="i45-tags"></div>
+            <div class="ml-btns">
+              <button class="ml-btn ghost" id="i45-reset" type="button">Reset</button>
+              <button class="ml-btn" id="i45-example" type="button">Setare „Industry 5.0”</button>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="row">
-        <div class="field">
-          <div class="label">Răcire (fan)</div>
-          <select id="cool">
-            <option value="high" selected>Ridicată</option>
-            <option value="mid">Medie</option>
-            <option value="low">Scăzută</option>
-          </select>
-          <div class="note">Răcire prea mare poate afecta aderența între straturi (în funcție de material).</div>
+      <!-- SIDE -->
+      <div class="card pad ml-side">
+        <div class="secHead">
+          <h2>Cum îl folosim?</h2>
+          <small>scurt scenariu didactic</small>
         </div>
-        <div class="field">
-          <div class="label">Material (simplificat)</div>
-          <select id="mat">
-            <option value="pla" selected>PLA</option>
-            <option value="petg">PETG</option>
-            <option value="abs">ABS</option>
-          </select>
-          <div class="note">ABS e mai sensibil la contracții / warp; PLA e mai „iertător”.</div>
+
+        <ul>
+          <li><b>5 minute</b>: „Ce parametri cresc riscul / abaterea?”</li>
+          <li><b>10 minute</b>: lucru în echipe — fiecare propune o setare și justifică decizia.</li>
+          <li><b>Reflecție</b>: variabile controlabile vs. constrângeri reale (timp, cost, calitate).</li>
+        </ul>
+
+        <div class="ml-footnote">
+          Succes!
         </div>
       </div>
+    </section>
 
-      <div class="out">
-        <h3>Explicație (conceptual)</h3>
-        <p id="fdm-text"></p>
-        <div id="fdm-tags"></div>
-        <div class="btns">
-          <button class="ghost" id="fdm-reset">Reset</button>
-          <button id="fdm-example">Setări „echilibrate”</button>
-        </div>
+    <footer class="wrap">
+      <div class="footRow">
+        <div>© <span id="y"></span> Daniel-Constantin ANGHEL</div>
+        <div class="mono">UNSTPB-CUP • Facultatea de Mecanică și Tehnologie</div>
       </div>
-    </div>
+    </footer>
+  </main>
 
-    <!-- ERGO -->
-    <div class="pane" id="pane-ergo" style="display:none">
-      <div class="kpi">
-        <div class="k"><div class="t">Scor risc (0–100)</div><div class="v" id="ergo-score">—</div></div>
-        <div class="k"><div class="t">Nivel</div><div class="v" id="ergo-level">—</div></div>
-        <div class="k"><div class="t">Prioritate acțiuni</div><div class="v" id="ergo-prio">—</div></div>
-      </div>
+  <script>
+    // Footer year
+    document.getElementById("y").textContent = new Date().getFullYear();
 
-      <div class="row">
-        <div class="field">
-          <div class="label">Repetitivitate (cicluri/min)</div>
-          <input id="rep" type="range" min="2" max="30" step="1" value="12">
-          <div class="note"><b id="rep-v"></b> — repetitivitate mare crește încărcarea cumulativă.</div>
-        </div>
-        <div class="field">
-          <div class="label">Forță percepută</div>
-          <select id="force">
-            <option value="low">Mică</option>
-            <option value="mid" selected>Medie</option>
-            <option value="high">Mare</option>
-          </select>
-          <div class="note">Forța + repetitivitatea cresc riscul musculo-scheletal.</div>
-        </div>
-      </div>
+    // Helpers
+    const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
+    const pct = (x) => Math.round(x) + "%";
 
-      <div class="row">
-        <div class="field">
-          <div class="label">Postură (trunchi/umeri)</div>
-          <select id="post">
-            <option value="neutral" selected>Neutră</option>
-            <option value="bent">Aplecat</option>
-            <option value="overhead">Brațe ridicate</option>
-          </select>
-          <div class="note">Postura nefavorabilă amplifică riscul chiar și la forțe mici.</div>
-        </div>
-        <div class="field">
-          <div class="label">Pauze (min/oră)</div>
-          <input id="breaks" type="range" min="0" max="15" step="1" value="5">
-          <div class="note"><b id="breaks-v"></b> — micro-pauzele reduc încărcarea cumulativă.</div>
-        </div>
-      </div>
+    // Tabs
+    const tabBtns = Array.from(document.querySelectorAll(".ml-tab"));
+    const panes = {
+      fdm: document.getElementById("pane-fdm"),
+      ergo: document.getElementById("pane-ergo"),
+      i45: document.getElementById("pane-i45"),
+    };
 
-      <div class="out">
-        <h3>Recomandări rapide</h3>
-        <p id="ergo-text"></p>
-        <div id="ergo-tags"></div>
-        <div class="btns">
-          <button class="ghost" id="ergo-reset">Reset</button>
-          <button id="ergo-example">Scenariu „problematic”</button>
-        </div>
-      </div>
-    </div>
+    tabBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tabBtns.forEach(b => { b.classList.remove("active"); b.setAttribute("aria-selected", "false"); });
+        btn.classList.add("active");
+        btn.setAttribute("aria-selected", "true");
 
-    <!-- I4->I5 -->
-    <div class="pane" id="pane-i45" style="display:none">
-      <div class="kpi">
-        <div class="k"><div class="t">Automatizare</div><div class="v" id="i45-a">—</div></div>
-        <div class="k"><div class="t">Centrare pe om</div><div class="v" id="i45-h">—</div></div>
-        <div class="k"><div class="t">Echilibru (0–100)</div><div class="v" id="i45-b">—</div></div>
-      </div>
-
-      <div class="row">
-        <div class="field">
-          <div class="label">Nivel digitalizare</div>
-          <input id="dig" type="range" min="0" max="100" step="5" value="70">
-          <div class="note"><b id="dig-v"></b> — senzori, date, conectivitate, vizibilitate în timp real.</div>
-        </div>
-        <div class="field">
-          <div class="label">Nivel autonomie operator</div>
-          <input id="aut" type="range" min="0" max="100" step="5" value="55">
-          <div class="note"><b id="aut-v"></b> — decizie locală, competențe, implicare, feedback.</div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="field">
-          <div class="label">Obiectiv dominant</div>
-          <select id="goal">
-            <option value="throughput" selected>Productivitate</option>
-            <option value="quality">Calitate</option>
-            <option value="sustain">Sustenabilitate</option>
-            <option value="wellbeing">Bunăstare / ergonomie</option>
-          </select>
-          <div class="note">Industry 5.0 caută echilibru: productivitate + om + sustenabilitate.</div>
-        </div>
-        <div class="field">
-          <div class="label">Nivel suport AI pentru operator</div>
-          <select id="ai">
-            <option value="none">Fără</option>
-            <option value="assist" selected>Asistență (recomandări)</option>
-            <option value="adaptive">Adaptiv (interfață + sarcini)</option>
-          </select>
-          <div class="note">AI-ul bun nu înlocuiește omul, ci îl amplifică (mai ales în decizie).</div>
-        </div>
-      </div>
-
-      <div class="out">
-        <h3>Interpretare</h3>
-        <p id="i45-text"></p>
-        <div id="i45-tags"></div>
-        <div class="btns">
-          <button class="ghost" id="i45-reset">Reset</button>
-          <button id="i45-example">Setare „Industry 5.0”</button>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- SIDE -->
-  <div class="card side">
-    <div class="pane">
-      <h2>Cum îl folosim?</h2>
-      <ul>
-        <li><b>5 minute</b> la început: „Ce parametri cresc riscul / abaterea?”</li>
-        <li><b>10 minute</b> în echipe: fiecare echipă caută „setarea optimă” și justifică.</li>
-        <li><b>Reflecție</b>: ce variabile sunt controlabile vs. constrângeri reale (timp, cost, calitate).</li>
-      </ul>
-      <div class="footer">
-        SUCCES!
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-  // Helpers
-  const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
-  const pct = (x) => Math.round(x) + "%";
-
-  // Tabs
-  document.querySelectorAll(".tab").forEach(t => {
-    t.addEventListener("click", () => {
-      document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
-      t.classList.add("active");
-      const tab = t.dataset.tab;
-      document.getElementById("pane-fdm").style.display = (tab==="fdm") ? "" : "none";
-      document.getElementById("pane-ergo").style.display = (tab==="ergo") ? "" : "none";
-      document.getElementById("pane-i45").style.display = (tab==="i45") ? "" : "none";
+        const tab = btn.dataset.tab;
+        Object.keys(panes).forEach(k => panes[k].style.display = (k === tab) ? "" : "none");
+      });
     });
-  });
 
-  // ---------- FDM ----------
-  const layer = document.getElementById("layer");
-  const speed = document.getElementById("speed");
-  const cool = document.getElementById("cool");
-  const mat  = document.getElementById("mat");
-
-  function fdmCompute(){
-    const L = parseFloat(layer.value);     // 0.10..0.30
-    const S = parseFloat(speed.value);     // 30..120
-    const C = cool.value;                  // high/mid/low
-    const M = mat.value;                   // pla/petg/abs
-
-    document.getElementById("layer-v").textContent = L.toFixed(2);
-    document.getElementById("speed-v").textContent = Math.round(S);
-
-    // scor simplificat: stabilitate mai bună cu layer mai mic + viteză moderată + material „iertător”
-    let stability = 0;
-    // layer: 0.10 best, 0.30 worst
-    stability += (0.30 - L) / 0.20 * 40;          // 0..40
-    // speed: 30..120 => prefer 45-70
-    const speedPenalty = Math.abs(S - 60) / 60;   // 0..1
-    stability += (1 - speedPenalty) * 30;         // 0..30
-
-    // cooling effect (heuristic)
-    let coolAdj = (C==="mid") ? 8 : (C==="high" ? 5 : 3);
-    // material sensitivity
-    let matAdj = (M==="pla") ? 20 : (M==="petg" ? 14 : 8);
-
-    stability = clamp(stability + coolAdj + matAdj, 0, 100);
-
-    // risk inverse
-    const risk = clamp(100 - stability, 0, 100);
-
-    let rec = "Echilibrat";
-    if (risk >= 65) rec = "Atenție";
-    else if (risk <= 25) rec = "Stabil";
-
-    document.getElementById("fdm-score").textContent = Math.round(stability);
-    document.getElementById("fdm-risk").textContent = Math.round(risk);
-    document.getElementById("fdm-rec").textContent = rec;
-
-    // text + tags
-    const tags = [];
-    if (L <= 0.14) tags.push("strat fin");
-    if (L >= 0.26) tags.push("strat gros");
-    if (S >= 95) tags.push("viteză mare");
-    if (S <= 45) tags.push("viteză mică");
-    if (M === "abs") tags.push("sensibil la warp");
-    if (C === "high") tags.push("răcire ridicată");
-
-    let text = "Interpretare: ";
-    if (risk > 60) {
-      text += "setarea are probabilitate mai mare de abateri (vibrații / depunere inconsistentă / contracții). ";
-      text += "Încearcă: scade viteza, redu înălțimea stratului sau optimizează răcirea în funcție de material.";
-    } else if (risk > 35) {
-      text += "setarea este rezonabilă, dar există câteva zone de îmbunătățire. ";
-      text += "Țintește viteze moderate și un strat 0.16–0.22 mm pentru un compromis bun.";
-    } else {
-      text += "setarea este stabilă pentru precizie (conceptual). ";
-      text += "Dacă timpul devine critic, crește ușor stratul sau viteza, dar incremental.";
-    }
-    document.getElementById("fdm-text").textContent = text;
-
-    const tagBox = document.getElementById("fdm-tags");
-    tagBox.innerHTML = tags.map(x => `<span class="pill">${x}</span>`).join("");
-  }
-
-  document.getElementById("fdm-reset").onclick = () => {
-    layer.value = 0.20; speed.value = 60; cool.value = "high"; mat.value="pla"; fdmCompute();
-  };
-  document.getElementById("fdm-example").onclick = () => {
-    layer.value = 0.18; speed.value = 55; cool.value = "mid"; mat.value="petg"; fdmCompute();
-  };
-  [layer, speed, cool, mat].forEach(el => el.addEventListener("input", fdmCompute));
-  fdmCompute();
-
-  // ---------- ERGO ----------
-  const rep = document.getElementById("rep");
-  const force = document.getElementById("force");
-  const post = document.getElementById("post");
-  const breaks = document.getElementById("breaks");
-
-  function ergoCompute(){
-    const R = parseFloat(rep.value); // 2..30
-    const B = parseFloat(breaks.value); // 0..15
-    document.getElementById("rep-v").textContent = Math.round(R);
-    document.getElementById("breaks-v").textContent = Math.round(B);
-
-    let score = 0;
-
-    // repetitivitate (0..40)
-    score += (R - 2) / 28 * 40;
-
-    // forță (0..30)
-    score += (force.value==="low") ? 8 : (force.value==="mid" ? 18 : 30);
-
-    // postură (0..25)
-    score += (post.value==="neutral") ? 6 : (post.value==="bent" ? 16 : 25);
-
-    // pauze reduc (0..20)
-    score -= (B / 15) * 20;
-
-    score = clamp(score, 0, 100);
-
-    let level = "Scăzut";
-    let prio = "Monitorizare";
-    if (score >= 70) { level = "Ridicat"; prio = "Intervenție rapidă"; }
-    else if (score >= 45) { level = "Mediu"; prio = "Îmbunătățiri țintite"; }
-
-    document.getElementById("ergo-score").textContent = Math.round(score);
-    document.getElementById("ergo-level").textContent = level;
-    document.getElementById("ergo-prio").textContent = prio;
-
-    const tags = [];
-    if (R >= 20) tags.push("repetitivitate mare");
-    if (force.value==="high") tags.push("forță mare");
-    if (post.value!=="neutral") tags.push("postură nefavorabilă");
-    if (B >= 10) tags.push("pauze bune");
-
-    let text = "";
-    if (score >= 70) {
-      text = "Recomandări: reduce repetitivitatea (rotație post), scade forța (ajutor mecanic), optimizează postura (înălțime, distanțe), introdu micro-pauze.";
-    } else if (score >= 45) {
-      text = "Recomandări: ajustează postura și secvența sarcinii; micro-pauze mai dese; verifică dacă forța poate fi redusă prin dispozitiv / sculă.";
-    } else {
-      text = "Situație relativ bună. Menține postura neutră, monitorizează repetitivitatea și asigură micro-pauze constante.";
+    function pillHTML(tags){
+      return tags.map(x => `<span class="ml-pill">${x}</span>`).join("");
     }
 
-    document.getElementById("ergo-text").textContent = text;
-    document.getElementById("ergo-tags").innerHTML = tags.map(x => `<span class="pill">${x}</span>`).join("");
-  }
+    // ---------- FDM ----------
+    const layer = document.getElementById("layer");
+    const speed = document.getElementById("speed");
+    const cool  = document.getElementById("cool");
+    const mat   = document.getElementById("mat");
 
-  document.getElementById("ergo-reset").onclick = () => {
-    rep.value = 12; force.value="mid"; post.value="neutral"; breaks.value=5; ergoCompute();
-  };
-  document.getElementById("ergo-example").onclick = () => {
-    rep.value = 26; force.value="high"; post.value="bent"; breaks.value=1; ergoCompute();
-  };
-  [rep, force, post, breaks].forEach(el => el.addEventListener("input", ergoCompute));
-  ergoCompute();
+    function fdmCompute(){
+      const L = parseFloat(layer.value);
+      const S = parseFloat(speed.value);
+      const C = cool.value;
+      const M = mat.value;
 
-  // ---------- I4->I5 ----------
-  const dig = document.getElementById("dig");
-  const aut = document.getElementById("aut");
-  const goal = document.getElementById("goal");
-  const ai = document.getElementById("ai");
+      document.getElementById("layer-v").textContent = L.toFixed(2);
+      document.getElementById("speed-v").textContent = Math.round(S);
 
-  function i45Compute(){
-    const D = parseFloat(dig.value);
-    const A = parseFloat(aut.value);
-    document.getElementById("dig-v").textContent = Math.round(D);
-    document.getElementById("aut-v").textContent = Math.round(A);
+      let stability = 0;
+      stability += (0.30 - L) / 0.20 * 40;
 
-    // interpretări: automatizare ~ digitalizare, human-centric ~ autonomie + AI assist/adaptive
-    let auto = clamp(D, 0, 100);
-    let human = clamp(A + (ai.value==="assist" ? 10 : (ai.value==="adaptive" ? 18 : 0)), 0, 100);
+      const speedPenalty = Math.abs(S - 60) / 60;
+      stability += (1 - speedPenalty) * 30;
 
-    // echilibru: penalizează extremele
-    const balance = clamp(100 - Math.abs(auto - human), 0, 100);
+      const coolAdj = (C==="mid") ? 8 : (C==="high" ? 5 : 3);
+      const matAdj  = (M==="pla") ? 20 : (M==="petg" ? 14 : 8);
 
-    document.getElementById("i45-a").textContent = pct(auto);
-    document.getElementById("i45-h").textContent = pct(human);
-    document.getElementById("i45-b").textContent = Math.round(balance);
+      stability = clamp(stability + coolAdj + matAdj, 0, 100);
+      const risk = clamp(100 - stability, 0, 100);
 
-    const tags = [];
-    tags.push(goal.value==="throughput" ? "focus productivitate" :
-              goal.value==="quality" ? "focus calitate" :
-              goal.value==="sustain" ? "focus sustenabilitate" : "focus bunăstare");
+      let rec = "Echilibrat";
+      if (risk >= 65) rec = "Atenție";
+      else if (risk <= 25) rec = "Stabil";
 
-    if (ai.value==="adaptive") tags.push("AI adaptiv");
-    if (balance >= 75) tags.push("echilibru bun");
-    if (balance <= 45) tags.push("dezechilibru");
+      document.getElementById("fdm-score").textContent = Math.round(stability);
+      document.getElementById("fdm-risk").textContent = Math.round(risk);
+      document.getElementById("fdm-rec").textContent = rec;
 
-    let text = "Interpretare: ";
-    if (balance >= 75) {
-      text += "configurație apropiată de o viziune Industry 5.0: digitalizarea susține decizia, iar operatorul păstrează control și sens.";
-    } else if (balance >= 50) {
-      text += "configurație acceptabilă, dar ai un ușor dezechilibru. Dacă automatizarea e mult peste autonomie, riști alienare; invers, riști lipsă de standardizare.";
-    } else {
-      text += "dezechilibru pronunțat: aliniază digitalizarea cu autonomie și suport AI orientat spre operator (nu doar spre KPI-uri).";
+      const tags = [];
+      if (L <= 0.14) tags.push("strat fin");
+      if (L >= 0.26) tags.push("strat gros");
+      if (S >= 95) tags.push("viteză mare");
+      if (S <= 45) tags.push("viteză mică");
+      if (M === "abs") tags.push("sensibil la warp");
+      if (C === "high") tags.push("răcire ridicată");
+
+      let text = "Interpretare: ";
+      if (risk > 60) {
+        text += "setarea are probabilitate mai mare de abateri (vibrații / depunere inconsistentă / contracții). ";
+        text += "Încearcă: scade viteza, redu înălțimea stratului sau ajustează răcirea în funcție de material.";
+      } else if (risk > 35) {
+        text += "setarea este rezonabilă, dar există zone de îmbunătățire. ";
+        text += "Țintește viteze moderate și un strat 0.16–0.22 mm pentru un compromis bun.";
+      } else {
+        text += "setarea este stabilă pentru precizie (conceptual). ";
+        text += "Dacă timpul devine critic, crește ușor stratul sau viteza, incremental.";
+      }
+
+      document.getElementById("fdm-text").textContent = text;
+      document.getElementById("fdm-tags").innerHTML = pillHTML(tags);
     }
 
-    document.getElementById("i45-text").textContent = text;
-    document.getElementById("i45-tags").innerHTML = tags.map(x => `<span class="pill">${x}</span>`).join("");
-  }
+    document.getElementById("fdm-reset").onclick = () => {
+      layer.value = 0.20; speed.value = 60; cool.value = "high"; mat.value="pla"; fdmCompute();
+    };
+    document.getElementById("fdm-example").onclick = () => {
+      layer.value = 0.18; speed.value = 55; cool.value = "mid"; mat.value="petg"; fdmCompute();
+    };
+    [layer, speed, cool, mat].forEach(el => el.addEventListener("input", fdmCompute));
+    fdmCompute();
 
-  document.getElementById("i45-reset").onclick = () => {
-    dig.value=70; aut.value=55; goal.value="throughput"; ai.value="assist"; i45Compute();
-  };
-  document.getElementById("i45-example").onclick = () => {
-    dig.value=75; aut.value=75; goal.value="sustain"; ai.value="adaptive"; i45Compute();
-  };
-  [dig, aut, goal, ai].forEach(el => el.addEventListener("input", i45Compute));
-  i45Compute();
-</script>
+    // ---------- ERGO ----------
+    const rep = document.getElementById("rep");
+    const force = document.getElementById("force");
+    const post = document.getElementById("post");
+    const breaks = document.getElementById("breaks");
+
+    function ergoCompute(){
+      const R = parseFloat(rep.value);
+      const B = parseFloat(breaks.value);
+
+      document.getElementById("rep-v").textContent = Math.round(R);
+      document.getElementById("breaks-v").textContent = Math.round(B);
+
+      let score = 0;
+      score += (R - 2) / 28 * 40;
+      score += (force.value==="low") ? 8 : (force.value==="mid" ? 18 : 30);
+      score += (post.value==="neutral") ? 6 : (post.value==="bent" ? 16 : 25);
+      score -= (B / 15) * 20;
+
+      score = clamp(score, 0, 100);
+
+      let level = "Scăzut";
+      let prio  = "Monitorizare";
+      if (score >= 70) { level = "Ridicat"; prio = "Intervenție rapidă"; }
+      else if (score >= 45) { level = "Mediu"; prio = "Îmbunătățiri țintite"; }
+
+      document.getElementById("ergo-score").textContent = Math.round(score);
+      document.getElementById("ergo-level").textContent = level;
+      document.getElementById("ergo-prio").textContent = prio;
+
+      const tags = [];
+      if (R >= 20) tags.push("repetitivitate mare");
+      if (force.value==="high") tags.push("forță mare");
+      if (post.value!=="neutral") tags.push("postură nefavorabilă");
+      if (B >= 10) tags.push("pauze bune");
+
+      let text = "";
+      if (score >= 70) {
+        text = "Recomandări: reduce repetitivitatea (rotație post), scade forța (ajutor mecanic), optimizează postura (înălțime, distanțe), introdu micro-pauze.";
+      } else if (score >= 45) {
+        text = "Recomandări: ajustează postura și secvența sarcinii; micro-pauze mai dese; verifică dacă forța poate fi redusă prin dispozitiv / sculă.";
+      } else {
+        text = "Situație relativ bună. Menține postura neutră, monitorizează repetitivitatea și păstrează micro-pauze constante.";
+      }
+
+      document.getElementById("ergo-text").textContent = text;
+      document.getElementById("ergo-tags").innerHTML = pillHTML(tags);
+    }
+
+    document.getElementById("ergo-reset").onclick = () => {
+      rep.value = 12; force.value="mid"; post.value="neutral"; breaks.value=5; ergoCompute();
+    };
+    document.getElementById("ergo-example").onclick = () => {
+      rep.value = 26; force.value="high"; post.value="bent"; breaks.value=1; ergoCompute();
+    };
+    [rep, force, post, breaks].forEach(el => el.addEventListener("input", ergoCompute));
+    ergoCompute();
+
+    // ---------- I4->I5 ----------
+    const dig = document.getElementById("dig");
+    const aut = document.getElementById("aut");
+    const goal = document.getElementById("goal");
+    const ai = document.getElementById("ai");
+
+    function i45Compute(){
+      const D = parseFloat(dig.value);
+      const A = parseFloat(aut.value);
+
+      document.getElementById("dig-v").textContent = Math.round(D);
+      document.getElementById("aut-v").textContent = Math.round(A);
+
+      const auto = clamp(D, 0, 100);
+      const human = clamp(A + (ai.value==="assist" ? 10 : (ai.value==="adaptive" ? 18 : 0)), 0, 100);
+
+      const balance = clamp(100 - Math.abs(auto - human), 0, 100);
+
+      document.getElementById("i45-a").textContent = pct(auto);
+      document.getElementById("i45-h").textContent = pct(human);
+      document.getElementById("i45-b").textContent = Math.round(balance);
+
+      const tags = [];
+      tags.push(
+        goal.value==="throughput" ? "focus productivitate" :
+        goal.value==="quality" ? "focus calitate" :
+        goal.value==="sustain" ? "focus sustenabilitate" : "focus bunăstare"
+      );
+
+      if (ai.value==="adaptive") tags.push("AI adaptiv");
+      if (balance >= 75) tags.push("echilibru bun");
+      if (balance <= 45) tags.push("dezechilibru");
+
+      let text = "Interpretare: ";
+      if (balance >= 75) {
+        text += "configurație apropiată de o viziune Industry 5.0: digitalizarea susține decizia, iar operatorul păstrează control și sens.";
+      } else if (balance >= 50) {
+        text += "configurație acceptabilă, dar există un dezechilibru. Dacă automatizarea e mult peste autonomie, crește riscul de alienare; invers, scade standardizarea și trasabilitatea.";
+      } else {
+        text += "dezechilibru pronunțat: aliniază digitalizarea cu autonomie și suport AI orientat spre operator (nu doar spre KPI-uri).";
+      }
+
+      document.getElementById("i45-text").textContent = text;
+      document.getElementById("i45-tags").innerHTML = pillHTML(tags);
+    }
+
+    document.getElementById("i45-reset").onclick = () => {
+      dig.value=70; aut.value=55; goal.value="throughput"; ai.value="assist"; i45Compute();
+    };
+    document.getElementById("i45-example").onclick = () => {
+      dig.value=75; aut.value=75; goal.value="sustain"; ai.value="adaptive"; i45Compute();
+    };
+    [dig, aut, goal, ai].forEach(el => el.addEventListener("input", i45Compute));
+    i45Compute();
+  </script>
 </body>
 </html>
