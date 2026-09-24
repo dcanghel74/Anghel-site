@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Direcții — Daniel-Constantin ANGHEL</title>
+  <title>Direcții de cercetare — Daniel-Constantin ANGHEL</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 <header>
   <div class="wrap top">
@@ -28,54 +29,75 @@
 <main class="wrap">
   <section class="card pad">
     <div class="secHead">
-      <h2>Direcții</h2>
-      <small>teme și abordări</small>
+      <h2>Cursuri (PDF)</h2>
+      <small>materiale disponibile pentru descărcare / lectură</small>
     </div>
 
-    <div class="cols">
-      <div class="item">
-        <b>Ergonomie și interacțiune om–mașină</b>
-        <p>
-          Evaluarea riscurilor ergonomice, confort și performanță, prevenirea erorilor și proiectare centrată pe utilizator.
-          Metode clasice și moderne, cu aplicații în medii industriale și educaționale.
-        </p>
-      </div>
+    <p>
+      Mai jos găsiți principalele directii de cercetare. Fiecare link deschide un fișier PDF.
+    </p>
 
-      <div class="item">
-        <b>Concepția și dezvoltarea produselor</b>
-        <p>
-          De la cerințe la soluții: integrarea funcțională, evaluarea variantelor, justificarea deciziilor și iterația
-          de proiectare.
-        </p>
-      </div>
+    <div class="hr"></div>
 
-      <div class="item">
-        <b>Fabricație aditivă și DfAM</b>
-        <p>
-          Proiectare pentru imprimare 3D, parametri tehnologici, calitate și precizie. Metodologii reproductibile și
-          evaluare bazată pe date.
-        </p>
-        <li><a href="cursuri/CV Anghel September 2026.pdf" target="_blank">Prof. DC ANGHEL</a></li>
-      </div>
+    <!-- ERGONOMIE -->
+    <div class="item">
+      <b>Ergonomie și interacțiune om–mașină</b>
+      <p class="meta">Folder: <span class="mono">/cursuri/ergonomie/</span></p>
 
-      <div class="item">
-        <b>Industry 4.0/5.0 și factorul uman</b>
-        <p>
-          Integrarea digitalizării cu dimensiunea umană: utilitate, adaptabilitate și responsabilitate în proiectarea
-          sistemelor și produselor.
-        </p>
-      </div>
+      <ul>
+        <li><a href="cursuri/ergonomie/Prezentare_Ergonomia_Echipamentelor_Logistice.png" target="_blank">Prezentare generala</a></li>
+        <li><a href="cursuri/ergonomie/A.pdf" target="_blank">Abrevieri utilizate </a></li>
+        
+
+
+
+
+        
+      </ul>
     </div>
+
+    <!-- PROIECTARE -->
+    <div class="item">
+      <b>Concepția și dezvoltarea produselor</b>
+      <p class="meta">Folder: <span class="mono">/cursuri/proiectare-produs/</span></p>
+
+      <ul>
+        <li><a href="cursuri/design_ergonomie/Revolutii.pptx" target="_blank">Revolutiile industriale </a></li>
+        <li><a href="cursuri/design_ergonomie/ELEMENTE_DE_ERGONOMIE_INDUSTRIALA.pdf" target="_blank">Carte - ELEMENTE DE ERGONOMIE INDUSTRIALA </a></li>
+      
+      </ul>
+    </div>
+
+    <!-- FAB ADITIVA -->
+    <div class="item">
+      <b>Fabricație Aditivă</b>
+      <p class="meta">Folder: <span class="mono">/cursuri/fabricatie-aditiva/</span></p>
+
+      <ul>
+        <li><a href="cursuri/fabricatie_aditiva/Cursul_1.pdf" target="_blank">C1 - Introducere în Tehnologiile de Fabricație Aditivă</a></li>
+        <li><a href="cursuri/fabricatie_aditiva/Cursul_2.pdf" target="_blank">C2 - Materiale utilizate în fabricația aditivă</a></li>
+        
+              </ul>
+    </div>
+
+    <div class="hr"></div>
+
+    <p class="meta">
+      Notă: dacă un link nu funcționează, înseamnă că fișierul nu a fost încă încărcat sau numele lui diferă.
+      Păstrează exact aceleași nume în repo ca în linkurile de aici.
+    </p>
   </section>
 
   <footer class="wrap">
     <div class="footRow">
       <div>© <span id="y"></span> Daniel-Constantin ANGHEL</div>
-      <div class="mono">UNSTPB • Facultatea de Mecanica si Tehnologie</div>
+      <div class="mono">UNSTPB • Facultatea de Mecanică și Tehnologie</div>
     </div>
   </footer>
 </main>
 
-<script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
